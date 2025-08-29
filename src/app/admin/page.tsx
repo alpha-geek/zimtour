@@ -65,11 +65,7 @@ export default function Admin() {
     setIsAuthenticated(false);
   };
 
-  if (!isAuthenticated) {
-    return <AdminLogin onLogin={handleLogin} isLoading={isLoading} error={loginError} />;
-  }
-
-  // Dashboard Stats
+  // Dashboard Stats - Define before conditional return
   const dashboardStats = [
     { 
       label: 'Total Tours', 
@@ -604,6 +600,11 @@ export default function Admin() {
       </div>
     );
   };
+
+  // Conditional return for login page
+  if (!isAuthenticated) {
+    return <AdminLogin onLogin={handleLogin} isLoading={isLoading} error={loginError} />;
+  }
 
   return (
     <div className="admin-page">
