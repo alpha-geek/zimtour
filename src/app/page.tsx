@@ -32,18 +32,33 @@ export default function Home() {
   const destinations = [
     {
       name: 'Victoria Falls',
-      image: 'https://images.unsplash.com/photo-1565967511849-76a60a516170?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      description: 'Experience the majestic Victoria Falls, one of the Seven Natural Wonders of the World.'
+      image: 'https://www.wildernessdestinations.com/media/2023/03/victoria-falls-zimbabwe.jpg',
+      description: 'Experience the majestic Victoria Falls with helicopter flights, bungee jumping, and river cruises.'
     },
     {
       name: 'Hwange National Park',
-      image: 'https://images.unsplash.com/photo-1549366021-9f761d450615?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
-      description: 'Discover Zimbabwe\'s largest national park with incredible wildlife viewing opportunities.'
+      image: 'https://www.andbeyond.com/wp-content/uploads/sites/5/hwange-national-park-zimbabwe.jpg',
+      description: 'Discover Zimbabwe\'s largest national park with walking safaris and luxury lodge experiences.'
+    },
+    {
+      name: 'Mana Pools',
+      image: 'https://www.wildernessdestinations.com/media/2023/03/mana-pools-zimbabwe.jpg',
+      description: 'Explore the pristine wilderness with canoe safaris and walking adventures.'
     },
     {
       name: 'Great Zimbabwe',
-      image: 'https://images.unsplash.com/photo-1528127269322-539801943592?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80',
+      image: 'https://www.zimbabwetourism.net/wp-content/uploads/2023/02/great-zimbabwe-ruins.jpg',
       description: 'Explore the ancient stone ruins of Great Zimbabwe, a UNESCO World Heritage site.'
+    },
+    {
+      name: 'Eastern Highlands',
+      image: 'https://www.zimbabwetourism.net/wp-content/uploads/2023/02/eastern-highlands-zimbabwe.jpg',
+      description: 'Hike through beautiful mountains with waterfalls and tea estates.'
+    },
+    {
+      name: 'Gonarezhou',
+      image: 'https://www.wildernessdestinations.com/media/2023/03/gonarezhou-national-park-zimbabwe.jpg',
+      description: 'Remote wilderness safari in Zimbabwe\'s second-largest national park.'
     }
   ];
 
@@ -127,6 +142,106 @@ export default function Home() {
         </div>
       </section>
 
+      {/* Adventure Activities */}
+      <section className="section">
+        <div className="container">
+          <h2 className="section-title">Adventure Activities</h2>
+          <p className="section-subtitle">Thrilling experiences for adrenaline seekers and adventure lovers</p>
+          <div className="grid grid-4">
+            <div className="activity-card card">
+              <div className="activity-icon">🚁</div>
+              <h3>Helicopter Flights</h3>
+              <p>Spectacular aerial views of Victoria Falls and the Zambezi River gorge</p>
+              <span className="activity-price">From $180</span>
+            </div>
+            <div className="activity-card card">
+              <div className="activity-icon">🏊</div>
+              <h3>Devil&apos;s Pool</h3>
+              <p>Swim at the edge of Victoria Falls during low water season</p>
+              <span className="activity-price">From $150</span>
+            </div>
+            <div className="activity-card card">
+              <div className="activity-icon">🛶</div>
+              <h3>River Cruises</h3>
+              <p>Sunset cruises on the Zambezi with wildlife viewing</p>
+              <span className="activity-price">From $85</span>
+            </div>
+            <div className="activity-card card">
+              <div className="activity-icon">🏃</div>
+              <h3>Bungee Jumping</h3>
+              <p>Thrilling bungee jump from Victoria Falls Bridge</p>
+              <span className="activity-price">From $120</span>
+            </div>
+            <div className="activity-card card">
+              <div className="activity-icon">🛶</div>
+              <h3>White Water Rafting</h3>
+              <p>Exciting rafting on the Zambezi River rapids</p>
+              <span className="activity-price">From $140</span>
+            </div>
+            <div className="activity-card card">
+              <div className="activity-icon">📸</div>
+              <h3>Photography Tours</h3>
+              <p>Professional photography workshops and wildlife photography</p>
+              <span className="activity-price">From $140</span>
+            </div>
+            <div className="activity-card card">
+              <div className="activity-icon">🏕️</div>
+              <h3>Walking Safaris</h3>
+              <p>Intimate walking experiences with expert guides</p>
+              <span className="activity-price">From $320</span>
+            </div>
+            <div className="activity-card card">
+              <div className="activity-icon">🚣</div>
+              <h3>Canoe Safaris</h3>
+              <p>Canoe adventures through Mana Pools wilderness</p>
+              <span className="activity-price">From $520</span>
+            </div>
+            <div className="activity-card card">
+              <div className="activity-icon">🎣</div>
+              <h3>River Fishing</h3>
+              <p>Professional fishing on the Zambezi River</p>
+              <span className="activity-price">From $180</span>
+            </div>
+            <div className="activity-card card">
+              <div className="activity-icon">🌙</div>
+              <h3>Night Safaris</h3>
+              <p>Nocturnal wildlife viewing with spotlights</p>
+              <span className="activity-price">From $120</span>
+            </div>
+            <div className="activity-card card">
+              <div className="activity-icon">🦅</div>
+              <h3>Bird Watching</h3>
+              <p>Specialized bird watching with expert guides</p>
+              <span className="activity-price">From $580</span>
+            </div>
+            <div className="activity-card card">
+              <div className="activity-icon">🛩️</div>
+              <h3>Microlight Flights</h3>
+              <p>Ultimate aerial experience over Victoria Falls</p>
+              <span className="activity-price">From $160</span>
+            </div>
+            <div className="activity-card card">
+              <div className="activity-icon">🎨</div>
+              <h3>Cultural Tours</h3>
+              <p>Traditional village visits and cultural experiences</p>
+              <span className="activity-price">From $65</span>
+            </div>
+            <div className="activity-card card">
+              <div className="activity-icon">🚴</div>
+              <h3>Mountain Biking</h3>
+              <p>Adventure biking through scenic mountain routes</p>
+              <span className="activity-price">From $120</span>
+            </div>
+            <div className="activity-card card">
+              <div className="activity-icon">🍽️</div>
+              <h3>Sunset Dinner Cruises</h3>
+              <p>Luxury dining on the Zambezi River</p>
+              <span className="activity-price">From $180</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Why Choose Us */}
       <section className="section why-choose-section">
         <div className="container">
@@ -159,7 +274,7 @@ export default function Home() {
               </div>
             </div>
             <div className="why-choose-image">
-              <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Zimbabwe Safari" />
+              <img src="https://www.andbeyond.com/wp-content/uploads/sites/5/zimbabwe-safari-experience.jpg" alt="Zimbabwe Safari" />
             </div>
           </div>
         </div>

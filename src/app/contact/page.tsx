@@ -38,6 +38,38 @@ export default function Contact() {
         </div>
       </section>
 
+      {/* Quick Contact Info */}
+      <section className="section quick-contact">
+        <div className="container">
+          <div className="quick-contact-grid">
+            <div className="quick-contact-item">
+              <FaPhone />
+              <h3>Call Us</h3>
+              <a href="tel:+263771234567">+263 77 123 4567</a>
+              <a href="tel:+263781234567">+263 78 123 4567</a>
+            </div>
+            <div className="quick-contact-item">
+              <FaEnvelope />
+              <h3>Email Us</h3>
+              <a href="mailto:info@zimtour.co.zw">info@zimtour.co.zw</a>
+              <a href="mailto:bookings@zimtour.co.zw">bookings@zimtour.co.zw</a>
+            </div>
+            <div className="quick-contact-item">
+              <FaMapMarkerAlt />
+              <h3>Visit Us</h3>
+              <p>123 Harare Street</p>
+              <p>Harare, Zimbabwe</p>
+            </div>
+            <div className="quick-contact-item">
+              <FaClock />
+              <h3>Business Hours</h3>
+              <p>Mon-Fri: 8:00 AM - 6:00 PM</p>
+              <p>Sat: 9:00 AM - 4:00 PM</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Contact Information */}
       <section className="section">
         <div className="container">
@@ -51,8 +83,9 @@ export default function Contact() {
                   <FaPhone />
                   <div>
                     <h3>Phone</h3>
-                    <p>+263 77 123 4567</p>
-                    <p>+263 78 123 4567</p>
+                    <a href="tel:+263771234567" className="contact-link">+263 77 123 4567</a>
+                    <a href="tel:+263781234567" className="contact-link">+263 78 123 4567</a>
+                    <p className="contact-note">Call us anytime for immediate assistance</p>
                   </div>
                 </div>
                 
@@ -60,8 +93,9 @@ export default function Contact() {
                   <FaEnvelope />
                   <div>
                     <h3>Email</h3>
-                    <p>info@zimtour.co.zw</p>
-                    <p>bookings@zimtour.co.zw</p>
+                    <a href="mailto:info@zimtour.co.zw" className="contact-link">info@zimtour.co.zw</a>
+                    <a href="mailto:bookings@zimtour.co.zw" className="contact-link">bookings@zimtour.co.zw</a>
+                    <p className="contact-note">We respond within 24 hours</p>
                   </div>
                 </div>
                 
@@ -213,6 +247,62 @@ export default function Contact() {
           min-height: 100vh;
         }
 
+        .quick-contact {
+          background: var(--background-light);
+          padding: 3rem 0;
+        }
+
+        .quick-contact-grid {
+          display: grid;
+          grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+          gap: 2rem;
+        }
+
+        .quick-contact-item {
+          text-align: center;
+          padding: 2rem;
+          background: white;
+          border-radius: var(--border-radius-lg);
+          box-shadow: var(--shadow-sm);
+          transition: transform 0.3s ease;
+        }
+
+        .quick-contact-item:hover {
+          transform: translateY(-5px);
+          box-shadow: var(--shadow-md);
+        }
+
+        .quick-contact-item svg {
+          font-size: 2.5rem;
+          color: var(--primary-color);
+          margin-bottom: 1rem;
+        }
+
+        .quick-contact-item h3 {
+          font-size: 1.25rem;
+          margin-bottom: 1rem;
+          color: var(--text-primary);
+        }
+
+        .quick-contact-item a {
+          display: block;
+          color: var(--primary-color);
+          text-decoration: none;
+          font-weight: 500;
+          margin-bottom: 0.5rem;
+          transition: color 0.2s ease;
+        }
+
+        .quick-contact-item a:hover {
+          color: var(--primary-dark);
+        }
+
+        .quick-contact-item p {
+          color: var(--text-secondary);
+          margin-bottom: 0.25rem;
+          line-height: 1.6;
+        }
+
         .contact-hero {
           background: linear-gradient(135deg, var(--primary-color) 0%, var(--primary-dark) 100%);
           color: white;
@@ -281,6 +371,28 @@ export default function Contact() {
           color: var(--text-secondary);
           margin-bottom: 0.25rem;
           line-height: 1.6;
+        }
+
+        .contact-link {
+          display: block;
+          color: var(--primary-color);
+          text-decoration: none;
+          font-weight: 500;
+          margin-bottom: 0.25rem;
+          transition: all 0.2s ease;
+          font-size: 1.1rem;
+        }
+
+        .contact-link:hover {
+          color: var(--primary-dark);
+          transform: translateX(5px);
+        }
+
+        .contact-note {
+          font-size: 0.875rem;
+          color: var(--text-light);
+          font-style: italic;
+          margin-top: 0.5rem;
         }
 
         .social-links h3 {
