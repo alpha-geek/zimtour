@@ -47,6 +47,7 @@ export default function Admin() {
         localStorage.setItem('adminToken', data.token);
         document.cookie = `adminToken=${data.token}; path=/; max-age=${7 * 24 * 60 * 60}; secure; samesite=strict`;
         setIsAuthenticated(true);
+        console.log('Login successful:', data.message);
       } else {
         setLoginError(data.error || 'Login failed');
       }

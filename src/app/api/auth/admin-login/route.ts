@@ -13,7 +13,33 @@ export async function POST(request: NextRequest) {
     const body = await request.json();
     const validatedData = adminLoginSchema.parse(body);
 
-    // Authenticate user
+    // Development fallback authentication (remove in production)
+    if (process.env.NODE_ENV === 'development') {
+      if (validatedData.email === 'admin@zimtour.co.zw' && validatedData.password === 'ZimTour2024!') {
+        const mockUser = {
+          id: 'dev-admin-1',
+          email: 'admin@zimtour.co.zw',
+          firstName: 'Admin',
+          lastName: 'User',
+          role: 'ADMIN',
+          isActive: true,
+        };
+
+        const token = generateToken({
+          userId: mockUser.id,
+          email: mockUser.email,
+          role: mockUser.role,
+        });
+
+        return NextResponse.json({
+          message: 'Admin login successful (Development Mode)',
+          user: mockUser,
+          token,
+        });
+      }
+    }
+
+    // Production authentication
     const user = await authenticateUser(validatedData.email, validatedData.password);
 
     if (!user) {
@@ -50,14 +76,18 @@ export async function POST(request: NextRequest) {
     const { password, ...userWithoutPassword } = user;
 
     // Log admin login
-    await prisma.adminLog.create({
-      data: {
-        userId: user.id,
-        action: 'ADMIN_LOGIN',
-        details: `Admin login from ${request.headers.get('x-forwarded-for') || 'unknown IP'}`,
-        ipAddress: request.headers.get('x-forwarded-for') || 'unknown',
-      },
-    });
+    try {
+      await prisma.adminLog.create({
+        data: {
+          userId: user.id,
+          action: 'ADMIN_LOGIN',
+          details: `Admin login from ${request.headers.get('x-forwarded-for') || 'unknown IP'}`,
+          ipAddress: request.headers.get('x-forwarded-for') || 'unknown',
+        },
+      });
+    } catch (logError) {
+      console.warn('Failed to log admin login:', logError);
+    }
 
     return NextResponse.json({
       message: 'Admin login successful',
