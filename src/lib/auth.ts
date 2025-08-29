@@ -32,20 +32,25 @@ export const verifyToken = (token: string): JWTPayload | null => {
 };
 
 export const authenticateUser = async (email: string, password: string) => {
-  const user = await prisma.user.findUnique({
-    where: { email, isActive: true }
-  });
+  try {
+    const user = await prisma.user.findUnique({
+      where: { email, isActive: true }
+    });
 
-  if (!user) {
+    if (!user) {
+      return null;
+    }
+
+    const isValidPassword = await comparePassword(password, user.password);
+    if (!isValidPassword) {
+      return null;
+    }
+
+    return user;
+  } catch (error) {
+    console.warn('Database connection error during authentication:', error);
     return null;
   }
-
-  const isValidPassword = await comparePassword(password, user.password);
-  if (!isValidPassword) {
-    return null;
-  }
-
-  return user;
 };
 
 export const createUser = async (userData: {
@@ -56,13 +61,18 @@ export const createUser = async (userData: {
   phone?: string;
   role?: string;
 }) => {
-  const hashedPassword = await hashPassword(userData.password);
+  try {
+    const hashedPassword = await hashPassword(userData.password);
 
-  return prisma.user.create({
-    data: {
-      ...userData,
-      password: hashedPassword,
-      role: userData.role || 'CUSTOMER',
-    },
-  });
+    return prisma.user.create({
+      data: {
+        ...userData,
+        password: hashedPassword,
+        role: userData.role || 'CUSTOMER',
+      },
+    });
+  } catch (error) {
+    console.warn('Database connection error during user creation:', error);
+    throw new Error('Failed to create user due to database connection issue');
+  }
 };

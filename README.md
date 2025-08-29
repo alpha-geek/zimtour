@@ -103,13 +103,14 @@ zimtour-nextjs/
 ### **Prerequisites**
 - Node.js 18.0 or later
 - npm or yarn package manager
+- PostgreSQL database (for full functionality)
 
-### **Installation**
+### **Quick Start (Development)**
 
 1. **Clone the repository**
    ```bash
    git clone <repository-url>
-   cd zimtour-nextjs
+   cd zimtour
    ```
 
 2. **Install dependencies**
@@ -117,22 +118,56 @@ zimtour-nextjs/
    npm install
    ```
 
-3. **Run the development server**
+3. **Set up environment variables**
+   ```bash
+   ./setup-env.sh
+   ```
+
+4. **Run the development server**
    ```bash
    npm run dev
    ```
 
-4. **Open your browser**
+5. **Open your browser**
    Navigate to `http://localhost:3000`
+
+### **Full Setup (With Database)**
+
+1. **Generate secure secrets**
+   ```bash
+   npm run generate-secrets
+   ```
+
+2. **Update .env.local** with your database URL and generated secrets
+
+3. **Set up database**
+   ```bash
+   npm run db:generate
+   npm run db:push
+   ```
+
+4. **Create admin user**
+   ```bash
+   npm run setup-admin
+   ```
+
+5. **Access admin panel**
+   - URL: `http://localhost:3000/admin`
+   - Email: `admin@zimtour.co.zw`
+   - Password: `ZimTour2024!`
 
 ### **Available Scripts**
 
 ```bash
-npm run dev          # Start development server
-npm run build        # Build for production
-npm run start        # Start production server
-npm run lint         # Run ESLint
-npm run type-check   # Run TypeScript type checking
+npm run dev              # Start development server
+npm run build            # Build for production
+npm run start            # Start production server
+npm run lint             # Run ESLint
+npm run setup-admin      # Create admin user
+npm run generate-secrets # Generate secure secrets
+npm run db:generate      # Generate Prisma client
+npm run db:push          # Push schema to database
+npm run db:migrate       # Run database migrations
 ```
 
 ## 📱 Responsive Design
