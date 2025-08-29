@@ -49,7 +49,7 @@ model Tour {
 
   // Relations
   bookings Booking[]
-  reviews  Review[]
+  tourReviews Review[] @relation("TourReviews")
 
   @@map("tours")
 }
@@ -110,7 +110,7 @@ model Review {
 
   // Relations
   user User @relation(fields: [userId], references: [id])
-  tour Tour @relation(fields: [tourId], references: [id])
+  tour Tour @relation("TourReviews", fields: [tourId], references: [id])
 
   @@map("reviews")
 }
